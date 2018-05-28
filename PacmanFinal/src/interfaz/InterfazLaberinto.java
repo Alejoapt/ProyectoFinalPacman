@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import hilos.*;
-import interfazAux.*;
+import interfazPrincipal.*;
 import mundo.*;
 
 @SuppressWarnings("serial")
@@ -76,8 +76,8 @@ public class InterfazLaberinto extends JFrame implements KeyListener {
 			salir();
 		} catch (Exception e) {
 			setVisible(true);
-			int respuesta = JOptionPane.showConfirmDialog(this, "Problemas salvando la información:\n" + e.getMessage()
-					+ "\n¿Quiere cerrar el programa sin salvar?", "Error", JOptionPane.YES_NO_OPTION);
+			int respuesta = JOptionPane.showConfirmDialog(this, "Problemas salvando la informaciï¿½n:\n" + e.getMessage()
+					+ "\nï¿½Quiere cerrar el programa sin salvar?", "Error", JOptionPane.YES_NO_OPTION);
 			if (respuesta == JOptionPane.YES_OPTION) {
 				super.dispose();
 				interfazBotones.setVisible(true);
@@ -87,7 +87,7 @@ public class InterfazLaberinto extends JFrame implements KeyListener {
 
 	public void salir() {
 		int opcion;
-			opcion = JOptionPane.showConfirmDialog(this, "¿Desea guardar el juego actual antes de salir?");
+			opcion = JOptionPane.showConfirmDialog(this, "ï¿½Desea guardar el juego actual antes de salir?");
 			if (opcion == JOptionPane.YES_OPTION) {
 				manejoMundo.setEnJuego(false);
 				manejoMundo.setGano(false);

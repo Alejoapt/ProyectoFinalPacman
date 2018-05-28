@@ -24,7 +24,13 @@ public class Enemigo1 extends Enemigo{
 			actualito = mundo.getMatriz()[pos][posInicialJ1];
 			mundo.getMatriz()[pos][posInicialJ1] = 0;
 		} else if (mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.DER
-				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.DER_ABRE) {
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.DER_ABRE
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.ARR
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.ARR_ABRE
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.ABJ
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.ABJ_ABRE
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.IZQ
+				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.IZQ_ABRE) {
 			mundo.setPerdio(true);
 			mundo.setEnJuego(false);
 			mundo.getMatriz()[posInicialI1][posInicialJ1] = actualito;

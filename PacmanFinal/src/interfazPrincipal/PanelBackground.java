@@ -1,4 +1,4 @@
-package interfazAux;
+package interfazPrincipal;
 
 import javax.swing.*;
 import java.awt.*;

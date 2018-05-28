@@ -30,7 +30,13 @@ public class Enemigo3y4 extends Enemigo {
 		int pos = posInicialJ1 - 1;
 		if (pos >= 2) {
 			if (mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.DER
-					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.DER_ABRE) {
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.DER_ABRE
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.ARR
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.ARR_ABRE
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.ABJ
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.ABJ_ABRE
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.IZQ
+					|| mundo.getMatriz()[posInicialI1][pos] == PanelMatriz.IZQ_ABRE) {
 				mundo.setPerdio(true);
 				mundo.setEnJuego(false);
 				mundo.getMatriz()[posInicialI1][posInicialJ1] = actualito;

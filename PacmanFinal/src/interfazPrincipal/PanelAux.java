@@ -1,4 +1,4 @@
-package interfazAux;
+package interfazPrincipal;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
