@@ -186,8 +186,12 @@ public class InterfazBotones extends JFrame {
 	public void mostrarPuntajes() throws Exception {
 		try {
 			String puntajes = "";
-			if (puntaje.getArreglo() != null) {
-				puntajes = "Puntajes\n" + puntaje.darPuntajes();
+			if(puntaje != null){
+				if (puntaje.getArreglo() != null) {
+					puntajes = "Puntajes\n" + puntaje.darPuntajes();
+				}
+			}else{
+				puntaje = new Puntaje();
 			}
 			JOptionPane.showMessageDialog(this, puntajes);
 		} catch (Exception e) {
@@ -210,7 +214,10 @@ public class InterfazBotones extends JFrame {
 	}
 
 	public void guardar(int puntajeActual, String nombre, int i) throws ErrorAgregandoPuntajeException {
-		puntaje.agregarPuntaje(0, nombre, puntajeActual);
+		if(puntaje !=null)
+			puntaje.agregarPuntaje(0, nombre, puntajeActual);
+		else
+			puntaje = new Puntaje();
 	}
 
 	public void dispose() {
@@ -232,9 +239,9 @@ public class InterfazBotones extends JFrame {
 	public void buscarPuntuacion() {
 		String puntuacion = JOptionPane.showInputDialog(this, "Ingrese el nombre del jugador a buscar");
 		if (puntuacion != null && !puntuacion.equals("")) {
-			int tmp = puntaje.darArreglito().buscarPorPuntuacion(Integer.parseInt(puntuacion));
-			if (tmp >= 0) {
-				Participante buscado = puntaje.darArreglito().participantePorPos(tmp);
+			Participante tmp = puntaje.darArreglito().buscarParticipanteCodigo(Integer.parseInt(puntuacion));
+			if (tmp != null) {
+				Participante buscado = tmp;
 				JOptionPane.showMessageDialog(this,
 						("El jugador con el puntaje: " + puntuacion + "\n" + "Es: " + buscado.getNombre()));
 			} else {
@@ -249,9 +256,9 @@ public class InterfazBotones extends JFrame {
 	public void buscarNombre() {
 		String nombre = JOptionPane.showInputDialog(this, "Ingrese el nombre del jugador a buscar");
 		if (nombre != null && !nombre.equals("")) {
-			int tmp = puntaje.darArreglito().buscarPorNombre(nombre);
-			if (tmp >= 0) {
-				Participante buscado = puntaje.darArreglito().participantePorPos(tmp);
+			Participante tmp = puntaje.darArreglito().buscarParticipanteNombre(nombre);
+			if (tmp != null) {
+				Participante buscado = tmp;
 				JOptionPane.showMessageDialog(this,
 						("El jugador: " + nombre + "\n" + "Tiene una puntuacion de: " + buscado.getPuntuacion()));
 			} else {

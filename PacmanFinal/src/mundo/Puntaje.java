@@ -25,12 +25,11 @@ public class Puntaje implements Serializable {
 	}
 
 	public String darPuntajes() {
-		ArrayList<Participante> puntajes = new ArrayList<Participante>();
-		puntajes = arbolPuntaje.recorridoInOrden();
+		ArregloParticipantes puntajes = arbolPuntaje.recorridoInOrden();
 		String mensaje = "";
 		for (int i = 0; i <puntajes.size(); i++) {
-			if(puntajes.get(i)!=null){
-				mensaje+= puntajes.get(i).getNombre()+ " "+puntajes.get(i).getPuntuacion()+"\n"; 
+			if(puntajes.participantePorPos(i)!=null){
+				mensaje+= puntajes.participantePorPos(i).getNombre()+ " "+puntajes.participantePorPos(i).getPuntuacion()+"\n"; 
 			}
 		}
 		return mensaje;

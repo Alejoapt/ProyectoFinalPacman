@@ -22,18 +22,18 @@ public class ArregloParticipantes implements Serializable {
 
 	public void agregarEnPos(int pos, Participante nuevo) {
 		participantes[pos] = nuevo;
-		ordenarArreglo();
+		ordenarArregloPuntos();
 	}
 
 	public void agregarAlFinal(Participante nuevo) {
 		if (participantes[participantes.length - 1] != null) {
 			aumentarTamanio();
 			participantes[participantes.length - 1] = nuevo;
-			ordenarArreglo();
+			ordenarArregloNombre();
 		} else {
 			participantes[participantes.length - 1] = nuevo;
 			eliminarNulos();
-			ordenarArreglo();
+			ordenarArregloNombre();
 		}
 	}
 
@@ -73,18 +73,20 @@ public class ArregloParticipantes implements Serializable {
 	}
 
 
-	public Participante buscarParticipante(String Nombre) {
+	public Participante buscarParticipanteNombre(String Nombre) {
 		int pos = -1;
 		int inicio = 0;
 		Participante retornado = null;
 		int fin = participantes.length - 1;
+		listar();
+		ordenarArregloNombre();
 		while (inicio <= fin && pos == -1) {
 			int medio = (inicio + fin) / 2;
 			Participante mitad = (Participante) participantes[medio];
 			if (mitad != null) {
 				if (mitad.getNombre().compareTo(Nombre) == 0) {
 					pos = medio;
-					retornado = participantes[0];
+					retornado = mitad;
 				} else if (mitad.getNombre().compareTo(Nombre) > 0) {
 					fin = medio - 1;
 				} else {
@@ -92,11 +94,49 @@ public class ArregloParticipantes implements Serializable {
 				}
 			}
 		}
-
+		deslistar();
 		return retornado;
 	}
 
+	public Participante buscarParticipanteCodigo(int codigo) {
+		int pos = -1;
+		int inicio = 0;
+		Participante retornado = null;
+		int fin = participantes.length - 1;
+		listar();
+		ordenarArregloPuntos();
+		while (inicio <= fin && pos == -1) {
+			int medio = (inicio + fin) / 2;
+			Participante mitad = (Participante) participantes[medio];
+			if (mitad != null) {
+				if (mitad.getPuntuacion()-codigo == 0) {
+					pos = medio;
+					retornado = mitad;
+				} else if (mitad.getPuntuacion()-codigo > 0) {
+					fin = medio - 1;
+				} else {
+					inicio = medio + 1;
+				}
+			}
+		}
+		deslistar();
+		return retornado;
+	}
 	
+	private void deslistar() {
+		for (int i = 0; i < participantes.length; i++) {
+			if(participantes[i]!=null && participantes[i].getNombre().equals(""))
+				participantes[i]=null;
+		}
+	}
+
+	private void listar() {
+		for (int i = 0; i < participantes.length; i++) {
+			if(participantes[i]==null)
+				participantes[i]=new Participante("",0,0);
+		}
+	}
+
 	public int buscarPorNombre(String nombre) {
 		int retorno = -1;
 		boolean encontrado = false;
@@ -125,11 +165,25 @@ public class ArregloParticipantes implements Serializable {
 		return retorno;
 	}
 
-	public void ordenarArreglo() {
+	public void ordenarArregloNombre() {
 		for (int i = 0; i < participantes.length - 1; i++) {
-			for (int j = i; j < participantes.length; j++) {
+			for (int j = i; j < participantes.length-1; j++) {
 				if (participantes[j] != null && participantes[j + 1] != null) {
 					if (participantes[j].getNombre().compareTo(participantes[j + 1].getNombre())>0) {
+						Participante tmp = participantes[j];
+						participantes[j] = participantes[j + 1];
+						participantes[j + 1] = tmp;
+					}
+				}
+			}
+		}
+	}
+	
+	public void ordenarArregloPuntos() {
+		for (int i = 0; i < participantes.length - 1; i++) {
+			for (int j = i; j < participantes.length-1; j++) {
+				if (participantes[j] != null && participantes[j + 1] != null) {
+					if (participantes[j].getPuntuacion()-participantes[j + 1].getPuntuacion()>0) {
 						Participante tmp = participantes[j];
 						participantes[j] = participantes[j + 1];
 						participantes[j + 1] = tmp;
@@ -174,6 +228,6 @@ public class ArregloParticipantes implements Serializable {
 	}
 
 	public int size() {
-		return participantes.length - 1;
+		return participantes.length;
 	}
 }

@@ -21,18 +21,18 @@ public class ArbolBinarioBusqueda implements Serializable {
 	public void insertar(Participante a) {
 		if (raiz == null) {
 			raiz = new Nodo(a);
-			;
 		} else {
 			raiz.insertar(a, raiz);
 		}
 	}
 
-	public ArrayList<Participante> recorridoInOrden() {
+	public ArregloParticipantes recorridoInOrden() {
 		retorno = InOrder(raiz);
+		arregloAux=new ArregloParticipantes();
 		for (int i = 0; i < retorno.size() ; i++) {
-			arregloAux.agregarAlFinal(retorno.get(i));
+			arregloAux.agregarEnPos(i,retorno.get(i));
 		}
-		return retorno;
+		return arregloAux;
 	}
 
 	public ArrayList<Participante> PostOrder(Nodo actual){

@@ -40,4 +40,8 @@ public class Participante implements Serializable{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
+	
+	public String toString(){
+		return nombre;
+	}
 }
