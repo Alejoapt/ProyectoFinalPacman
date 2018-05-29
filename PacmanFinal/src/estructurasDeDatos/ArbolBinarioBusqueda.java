@@ -29,7 +29,7 @@ public class ArbolBinarioBusqueda implements Serializable {
 
 	public ArrayList<Participante> recorridoInOrden() {
 		retorno = InOrder(raiz);
-		for (int i = 0; i < retorno.size(); i++) {
+		for (int i = 0; i < retorno.size() ; i++) {
 			arregloAux.agregarAlFinal(retorno.get(i));
 		}
 		return retorno;
@@ -56,7 +56,6 @@ public class ArbolBinarioBusqueda implements Serializable {
 		return retorno;
 	}
 
-	// TODO
 	public boolean eliminarNodo(Nodo actual) {
 		boolean elimino = false;
 		if (actual != null) {

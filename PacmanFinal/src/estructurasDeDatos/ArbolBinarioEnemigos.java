@@ -59,7 +59,6 @@ public class ArbolBinarioEnemigos implements Serializable{
 		return retorno;
 	}
 
-	// TODO
 	public boolean eliminarNodo(NodoEnemigos actual) {
 		boolean elimino = false;
 		if (actual != null) {

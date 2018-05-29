@@ -228,7 +228,25 @@ public class InterfazBotones extends JFrame {
 
 	}
 
-	public void buscar() {
+
+	public void buscarPuntuacion() {
+		String puntuacion = JOptionPane.showInputDialog(this, "Ingrese el nombre del jugador a buscar");
+		if (puntuacion != null && !puntuacion.equals("")) {
+			int tmp = puntaje.darArreglito().buscarPorPuntuacion(Integer.parseInt(puntuacion));
+			if (tmp >= 0) {
+				Participante buscado = puntaje.darArreglito().participantePorPos(tmp);
+				JOptionPane.showMessageDialog(this,
+						("El jugador con el puntaje: " + puntuacion + "\n" + "Es: " + buscado.getNombre()));
+			} else {
+				JOptionPane.showMessageDialog(this, "El jugador solicitado no existe");
+			}
+		} else {
+			JOptionPane.showMessageDialog(this, "La puntuacion del jugador no esta correctamente escrito");
+		}
+	}
+	
+	
+	public void buscarNombre() {
 		String nombre = JOptionPane.showInputDialog(this, "Ingrese el nombre del jugador a buscar");
 		if (nombre != null && !nombre.equals("")) {
 			int tmp = puntaje.darArreglito().buscarPorNombre(nombre);

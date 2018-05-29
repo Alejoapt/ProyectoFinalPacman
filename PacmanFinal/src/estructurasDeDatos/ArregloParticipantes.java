@@ -16,7 +16,7 @@ public class ArregloParticipantes implements Serializable {
 	}
 
 	public ArregloParticipantes() {
-		tamanioInicial = 10;
+		tamanioInicial = 20;
 		participantes = new Participante[tamanioInicial];
 	}
 
@@ -73,7 +73,7 @@ public class ArregloParticipantes implements Serializable {
 	}
 
 
-	public Participante buscarParticipante(Participante dato) {
+	public Participante buscarParticipante(String Nombre) {
 		int pos = -1;
 		int inicio = 0;
 		Participante retornado = null;
@@ -82,10 +82,10 @@ public class ArregloParticipantes implements Serializable {
 			int medio = (inicio + fin) / 2;
 			Participante mitad = (Participante) participantes[medio];
 			if (mitad != null) {
-				if (mitad.getNombre().compareTo(dato.getNombre()) == 0) {
+				if (mitad.getNombre().compareTo(Nombre) == 0) {
 					pos = medio;
 					retornado = participantes[0];
-				} else if (mitad.getNombre().compareTo(dato.getNombre()) > 0) {
+				} else if (mitad.getNombre().compareTo(Nombre) > 0) {
 					fin = medio - 1;
 				} else {
 					inicio = medio + 1;
@@ -96,13 +96,27 @@ public class ArregloParticipantes implements Serializable {
 		return retornado;
 	}
 
-	// TODO
+	
 	public int buscarPorNombre(String nombre) {
 		int retorno = -1;
 		boolean encontrado = false;
 		for (int i = 0; i < participantes.length && !encontrado; i++) {
 			if (participantes[i] != null) {
 				if (participantes[i].getNombre().equals(nombre)) {
+					retorno = i;
+					encontrado = true;
+				}
+			}
+		}
+		return retorno;
+	}
+	
+	public int buscarPorPuntuacion(int puntuacion) {
+		int retorno = -1;
+		boolean encontrado = false;
+		for (int i = 0; i < participantes.length && !encontrado; i++) {
+			if (participantes[i] != null) {
+				if (participantes[i].getPuntuacion() == (puntuacion)) {
 					retorno = i;
 					encontrado = true;
 				}
@@ -160,6 +174,6 @@ public class ArregloParticipantes implements Serializable {
 	}
 
 	public int size() {
-		return tamanioInicial;
+		return participantes.length - 1;
 	}
 }
