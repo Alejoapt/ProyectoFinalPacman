@@ -235,7 +235,7 @@ public class InterfazLaberinto extends JFrame implements KeyListener {
 	}
 
 	public void moverEnemigo1Abajo(int posInicialI, int posInicialJ) {
-		if (posInicialI < manejoMundo.getMatriz().length - 1) {
+		if (posInicialI < manejoMundo.getMatriz().length -1 ) {
 			int pos = manejoMundo.moverEnemigo1Abajo(posInicialI, posInicialJ);
 			hiloEnemigo.setPosInicialI1(pos);
 		}

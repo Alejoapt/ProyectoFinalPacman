@@ -23,6 +23,11 @@ public class Enemigo1 extends Enemigo{
 			mundo.getMatriz()[posInicialI1][posInicialJ1] = actualito;
 			actualito = mundo.getMatriz()[pos][posInicialJ1];
 			mundo.getMatriz()[pos][posInicialJ1] = 0;
+			if (mundo.getMatriz()[pos][posInicialJ1] == 6) {
+				System.out.println("holi");
+			}
+			
+			
 		} else if (mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.DER
 				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.DER_ABRE
 				|| mundo.getMatriz()[pos][posInicialJ1] == PanelMatriz.ARR

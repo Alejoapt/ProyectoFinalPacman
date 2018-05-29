@@ -122,8 +122,11 @@ public class ManejoMundo {
 					break;
 				}
 				String[] tramos = linea.split(",");
-				matriz[Integer.parseInt(tramos[0])][Integer.parseInt(tramos[1])] = Integer.parseInt(tramos[2]);
-			}
+				if(tramos[2].equals("4")|| tramos[2].equals("10")|| tramos[2].equals("11")|| tramos[2].equals("12")|| tramos[2].equals("13")|| tramos[2].equals("14")|| tramos[2].equals("15")|| tramos[2].equals("16")){
+					matriz[Integer.parseInt(tramos[0])][Integer.parseInt(tramos[1])] = 4;
+				}else{
+					matriz[Integer.parseInt(tramos[0])][Integer.parseInt(tramos[1])] = Integer.parseInt(tramos[2]);
+				}			}
 			br.close();
 		} catch (IOException e) {
 			throw new MapaIncorrectoException();

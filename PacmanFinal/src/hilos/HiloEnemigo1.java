@@ -44,7 +44,7 @@ public class HiloEnemigo1 extends Thread {
 	public void run() {
 		while (manejoMundo.estaEnJuego()) {
 			if (!manejoMundo.getPerdio()) {
-				for (int i = 0; i < manejoMundo.getMatriz().length-1; i++) {
+				for (int i = 0; i < manejoMundo.getMatriz().length -1; i++) {
 					interfaz.moverEnemigo1Abajo(posInicialI1, posInicialJ1);
 					if (manejoMundo.isGano()) {
 						break;
